@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  background: #fef9ff;
+  font-family: sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* space between rows */
+}
+
+/* ─── FIRST ROW: Carousel ─────────────── */
+.carousel-container {
+  width: 1290px; /* 4 cards × (300px + 10px margin) */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  margin: 0 5px;
+  flex-shrink: 0;
+}
+
+.card-content {
+  background: #a049bd;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+/* ─── SECOND ROW: Carousel with 6 Cards ─ */
+.cards {
+  width: 100%;
+  height: 500px;
+  background-color: rgb(49, 49, 119);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-container2 {
+  width: 1440px; /* 6 cards × (230px + 10px margin) */
+  overflow: hidden;
+
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background: transparent;
+  padding: 0 10px;
+}
+
+.carousel2-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.card2 {
+  width: 230px;
+  height: 300px;
+  margin: 0 5px;
+  flex-shrink: 0;
+  border: 3px white solid;
+}
+
+.card-content2 {
+  background: transparent;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+/* ─── RESPONSIVE: ≤600px ──────────────── */
+@media (max-width: 600px) {
+  /* First row carousel */
+  .carousel-container {
+    width: 450px; /* 2 cards × (200px + 10px margin) */
+  }
+  .card {
+    width: 200px;
+    height: 300px;
+  }
+
+  /* Second row carousel */
+  .carousel-container2 {
+    width: 900px; /* 2 cards visible */
+  }
+  .card2 {
+    width: 200px;
+    height: 300px;
+  }
+  .card-content2 {
+    font-size: 20px;
+  }
+}
