@@ -1,12 +1,14 @@
-function initCarousel(trackId, totalCards, cardWidthLarge, cardWidthSmall) {
+function initCarousel(trackId, totalCards) {
   const track = document.getElementById(trackId);
   let currentIndex = 0;
 
-  // Duplicate all cards for smooth infinite scroll
+  // Duplicate all cards
   track.innerHTML += track.innerHTML;
 
   function getCardWidth() {
-    return window.innerWidth <= 600 ? cardWidthSmall : cardWidthLarge;
+    // Get first card's width directly from DOM
+    const firstCard = track.querySelector(".card, .card2");
+    return firstCard.offsetWidth + 10; // Add margin/padding if needed
   }
 
   function moveCarousel() {
@@ -27,12 +29,9 @@ function initCarousel(trackId, totalCards, cardWidthLarge, cardWidthSmall) {
     }
   }
 
-  // Move every 2 seconds
   setInterval(moveCarousel, 2000);
 }
 
-// First row (top)
-initCarousel("carouselTrack", 10, 310, 210);
-
-// Second row (bottom)
-initCarousel("carouselTrack2", 10, 310, 210);
+// Initialize
+initCarousel("carouselTrack", 10); // 10 cards for first
+initCarousel("carouselTrack2", 10); // 10 cards for second
