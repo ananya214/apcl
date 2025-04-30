@@ -21,7 +21,8 @@ body {
 }
 
 .carousel-container {
-  width: 1290px;
+  width: 100%;
+  max-width: 1290px;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -58,7 +59,8 @@ body {
 }
 
 .carousel-container2 {
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   overflow: hidden;
 
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
@@ -84,9 +86,10 @@ body {
   font-weight: bold;
   color: white;
 }
+
 /* Card 1 (first carousel) */
 .card {
-  width: calc(1290px / 4 - 10px); /* 4 cards with margins */
+  width: calc(100% / 4 - 10px); /* 4 cards with margins */
   height: 400px;
   margin: 0 5px;
   flex-shrink: 0;
@@ -94,7 +97,7 @@ body {
 
 /* Card 2 (second carousel) */
 .card2 {
-  width: calc(1440px / 6 - 10px); /* 6 cards with margins */
+  width: calc(100% / 6 - 10px); /* 6 cards with margins */
   height: 300px;
   margin: 0 5px;
   flex-shrink: 0;
@@ -104,26 +107,27 @@ body {
 @media (max-width: 600px) {
   .carousel-container,
   .carousel-container2 {
-    width: 100%;
-    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
   }
 
   .card,
   .card2 {
-    width: calc(50% - 8px); /* 8px gap total (4px each side) */
-    height: 300px;
-    margin: 0 4px; /* horizontal gap between cards */
-    flex-shrink: 0;
-    box-sizing: border-box;
+    width: 48%; /* 2 cards per row */
+    height: 200px; /* Custom height for mobile */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .card-content,
   .card-content2 {
-    font-size: 18px;
-    height: 100%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding: 10px;
   }
 }
