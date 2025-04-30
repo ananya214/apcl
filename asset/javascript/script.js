@@ -1,37 +1,46 @@
-function initCarousel(trackId, totalCards) {
-  const track = document.getElementById(trackId);
-  let currentIndex = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  const carousels = document.querySelectorAll(".carousel-track");
 
-  // Duplicate all cards
-  track.innerHTML += track.innerHTML;
+  carousels.forEach((track) => {
+    const cards = track.querySelectorAll(".card");
+    const cardCount = cards.length;
+    let currentIndex = 0;
+    let isAnimating = false;
 
-  function getCardWidth() {
-    // Get first card's width directly from DOM
-    const firstCard = track.querySelector(".card, .card2");
-    return firstCard.offsetWidth + 10; // Add margin/padding if needed
-  }
+    const firstCards = Array.from(cards).slice(0, 4);
+    firstCards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      track.appendChild(clone);
+    });
 
-  function moveCarousel() {
-    const cardWidth = getCardWidth();
-    currentIndex += 1;
+    function slideNext() {
+      if (isAnimating) return;
 
-    track.style.transform = `translateX(-${cardWidth * currentIndex}px)`;
+      isAnimating = true;
+      const cardWidth = cards[0].offsetWidth + 10;
+      currentIndex++;
 
-    if (currentIndex >= totalCards) {
+      // Apply the slide animation
+      track.style.transition = "transform 1s ease";
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
       setTimeout(() => {
-        track.style.transition = "none";
-        track.style.transform = "translateX(0px)";
-        currentIndex = 0;
+        if (currentIndex >= cardCount) {
+          track.style.transition = "none";
+          currentIndex = 0;
+          track.style.transform = `translateX(0)`;
 
-        void track.offsetWidth;
-        track.style.transition = "transform 0.5s ease-in-out";
-      }, 500);
+          track.offsetHeight;
+
+          track.style.transition = "transform 1s ease";
+        }
+
+        isAnimating = false;
+      }, 1000);
     }
-  }
 
-  setInterval(moveCarousel, 2000);
-}
+    setInterval(slideNext, 3000);
 
-// Initialize
-initCarousel("carouselTrack", 10); // 10 cards for first
-initCarousel("carouselTrack2", 10); // 10 cards for second
+    setTimeout(slideNext, 2000);
+  });
+});
