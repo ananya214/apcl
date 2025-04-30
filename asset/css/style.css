@@ -67,7 +67,13 @@ body {
 }
 
 img {
-  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.card.primary-card img {
+  height: 100%;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
