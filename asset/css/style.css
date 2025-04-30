@@ -49,9 +49,10 @@ body {
 }
 
 .card.primary-card {
-  height: 250px;
-  background: #a049bd;
-  color: white;
+  height: 400px;
+  background: transparent;
+  color: transparent;
+  border: grey 2px solid;
 }
 
 /* Second row cards */
@@ -62,13 +63,13 @@ body {
 }
 
 .card.small-card {
-  height: 180px;
+  height: 250px;
   margin: 10px 10px 10px 0;
 }
 
 img {
-  height: 100%;
-  width: 100%;
+  height: 80%;
+  width: 80%;
 }
 
 .card.primary-card img {
